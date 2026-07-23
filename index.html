@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZON Green Zone | Fresh, Healthy & Delicious Cloud Kitchen</title>
+<meta name="description" content="AZON Green Zone - Premium cloud kitchen serving fresh, healthy, high-protein Telangana style meals, tiffins, snacks and juices in Hyderabad.">
+
+<!-- Google Fonts: Fraunces (display/headings) + Manrope (body/UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="CSS/variables.css">
+<link rel="stylesheet" href="CSS/typography.css">
+<link rel="stylesheet" href="CSS/loader.css">
+<link rel="stylesheet" href="CSS/navbar.css">
+<link rel="stylesheet" href="CSS/search.css">
+<link rel="stylesheet" href="CSS/hero.css">
+<link rel="stylesheet" href="CSS/about.css">
+<link rel="stylesheet" href="CSS/gallery.css">
+<link rel="stylesheet" href="CSS/menu.css">
+<link rel="stylesheet" href="CSS/contact.css">
+<link rel="stylesheet" href="CSS/cart.css">
+<link rel="stylesheet" href="CSS/footer.css">
+<link rel="stylesheet" href="CSS/responsive.css">
+</head>
+<body>
+
+<!-- ============================================================
+     LOADING SCREEN
+     ============================================================ -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <span class="loader-leaf">🌿</span>
+    <p class="loader-text">AZON <span>Green Zone</span></p>
+  </div>
+</div>
+
+<!-- ============================================================
+     SCROLL PROGRESS BAR
+     ============================================================ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============================================================
+     NAVIGATION BAR
+============================================================ -->
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <!-- Left side: logo -->
+    <div class="nav-left">
+      <a href="#home" class="nav-logo">
+        <img src="azon.png" alt="AZON Green Zone logo" onerror="this.style.display='none'">
+        <span class="nav-logo-text">AZON <em>Green Zone</em></span>
+      </a>
+
+      <!-- Desktop diet toggle -->
+      <div class="diet-toggle" role="group" aria-label="Diet filter">
+        <button class="diet-btn veg active" data-diet="veg" aria-pressed="true">
+          <span class="diet-dot"></span> Veg
+        </button>
+        <button class="diet-btn nonveg" data-diet="nonveg" aria-pressed="false">
+          <span class="diet-dot"></span> Non-Veg
+        </button>
+      </div>
+    </div>
+
+    <!-- Center: dark / light mode toggle -->
+    <div class="nav-center">
+      <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode">
+        <span class="mode-icon sun">☀️</span>
+        <span class="mode-thumb"></span>
+        <span class="mode-icon moon">🌙</span>
+      </button>
+    </div>
+
+    <!-- Search bar -->
+    <div class="searchBox">
+      <input class="searchInput" type="text" placeholder="Search something">
+      <button class="searchButton" type="submit">🔍</button>
+    </div>
+
+    <!-- Right side: nav links -->
+    <nav class="nav-right" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About Us</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#contact" class="nav-link">Contact Us</a>
+    </nav>
+
+    <!-- Cart -->
+    <button class="cart-button" id="cartButton" type="button" aria-label="Open shopping cart">
+      <span class="cart-icon" aria-hidden="true">🛒</span>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+
+    <!-- Hamburger for mobile -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile slide-down menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About Us</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#menu" class="nav-link">Menu</a>
+    <a href="#contact" class="nav-link">Contact Us</a>
+
+    <!-- Mobile diet toggle -->
+    <div class="diet-toggle mobile" role="group" aria-label="Diet filter">
+      <button class="diet-btn veg active" data-diet="veg" aria-pressed="true">
+        <span class="diet-dot"></span> Veg
+      </button>
+      <button class="diet-btn nonveg" data-diet="nonveg" aria-pressed="false">
+        <span class="diet-dot"></span> Non-Veg
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" id="home">
+  <!-- Ambient floating shapes -->
+  <div class="floating-shape shape-1" aria-hidden="true"></div>
+  <div class="floating-shape shape-2" aria-hidden="true"></div>
+  <div class="floating-shape shape-3" aria-hidden="true"></div>
+
+  <div class="hero-container">
+    <div class="hero-left reveal">
+      <span class="eyebrow">🌱 Hyderabad's Freshest Cloud Kitchen</span>
+      <h1 class="hero-heading">
+        Fresh, Healthy &amp; <span class="text-gradient">Delicious</span> Foods
+      </h1>
+      <ul class="hero-subtitle">
+        <li>Fresh Ingredients</li>
+        <li>Healthy Meals</li>
+        <li>High Protein Foods</li>
+        <li>Freshly Prepared Every Day</li>
+      </ul>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary ripple">Order Now</a>
+        <a href="#menu" class="btn btn-outline ripple">Explore Menu</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>10k+</strong><span>Meals Delivered</span></div>
+        <div class="stat"><strong>4.8★</strong><span>Average Rating</span></div>
+        <div class="stat"><strong>30 min</strong><span>Fresh Prep Time</span></div>
+      </div>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="hero-image-wrap floating hero-slider" id="heroSlider">
+        <div class="hero-slide is-active">
+          <img src="hero1.jpg" alt="Fresh healthy meal from AZON Green Zone" class="hero-image" onerror="this.onerror=null; this.src='azon.png'; this.alt='AZON Green Zone';">
+        </div>
+        <div class="hero-slide">
+          <img src="hero2.jpg" alt="Healthy protein bowls from AZON Green Zone" class="hero-image" onerror="this.onerror=null; this.src='azon.png'; this.alt='AZON Green Zone';">
+        </div>
+        <div class="hero-slide">
+          <img src="hero3.jpg" alt="Signature meals from AZON Green Zone" class="hero-image" onerror="this.onerror=null; this.src='azon.png'; this.alt='AZON Green Zone';">
+        </div>
+
+        <button type="button" class="hero-slider-arrow prev" id="heroPrev" aria-label="Previous slide">‹</button>
+        <button type="button" class="hero-slider-arrow next" id="heroNext" aria-label="Next slide">›</button>
+
+        <div class="hero-slider-dots" aria-label="Hero image slide controls">
+          <button type="button" class="hero-slider-dot active" data-slide="0" aria-label="Show slide 1" aria-current="true"></button>
+          <button type="button" class="hero-slider-dot" data-slide="1" aria-label="Show slide 2" aria-current="false"></button>
+          <button type="button" class="hero-slider-dot" data-slide="2" aria-label="Show slide 3" aria-current="false"></button>
+        </div>
+      </div>
+      <div class="hero-badge glass">
+        <span class="hero-badge-icon">🥗</span>
+        <div>
+          <strong>100% Fresh</strong>
+          <small>Cooked after you order</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>
+
+<!-- ============================================================
+     ABOUT US SECTION
+     ============================================================ -->
+<section class="about" id="about">
+  <div class="about-container">
+    <div class="about-image reveal">
+      <img src="azon.jpg.jpeg" alt="Inside AZON Green Zone kitchen" onerror="this.onerror=null; this.src='azon.png'; this.alt='AZON Green Zone';">
+      <div class="about-image-tag glass">Made Fresh Daily</div>
+    </div>
+
+    <div class="about-content reveal">
+      <span class="eyebrow">About Us</span>
+      <h2 class="section-heading">About AZON <span class="text-gradient">Green Zone</span></h2>
+      <p class="about-text">
+        AZON Green Zone is a cloud kitchen built around one simple idea: food should be fresh, honest, and good for you.
+        Every dish is prepared only after your order is placed, using ingredients sourced for quality and nutrition,
+        never sitting under a warmer, never reheated. Our kitchen blends the comforting flavours of authentic
+        Telangana style cooking with a modern, protein-forward approach to eating well.
+      </p>
+      <p class="about-text">
+        From wholesome veg meals to hearty non-veg curries, light tiffins, evening snacks and cold-pressed fresh
+        juices, our menu is built for people who refuse to choose between taste and health. Whether you're fuelling
+        a workout, feeding a family, or craving a taste of home, AZON Green Zone brings it to your door hot, fresh
+        and ready.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🥗</span>
+          <h3>Fresh Food</h3>
+          <p>Cooked to order, never stored or reheated.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">💪</span>
+          <h3>Healthy</h3>
+          <p>Balanced, protein-rich meals for every goal.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🌿</span>
+          <h3>Eco Friendly</h3>
+          <p>Sustainable packaging, mindful sourcing.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">✨</span>
+          <h3>Premium Quality</h3>
+          <p>Restaurant-grade ingredients, every single time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY SECTION
+     ============================================================ -->
+<section class="gallery" id="gallery">
+  <div class="section-intro reveal">
+    <span class="eyebrow">Gallery</span>
+    <h2 class="section-heading">A Taste of What Awaits</h2>
+    <p class="section-sub">A glimpse into our kitchen and the dishes we're proud to serve.</p>
+  </div>
+<div class="gallery-grid" id="galleryGrid">
+    <!-- Gallery items injected by script.js also work statically here -->
+    <div class="gallery-item reveal" data-name="mutton curry" data-img="images/nonveg/muttoncurry.jpg">
+      <img src="images/nonveg/muttoncurry.jpg" alt="Paneer Butter Masala" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>mutton curry</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Chicken Biryani" data-img="images/nonveg/chickenbiryani.jpg">
+      <img src="images/nonveg/chickenbiryani.jpg" alt="Chicken Biryani" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Chicken Biryani</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Chicken Curry" data-img="images/nonveg/chickencurry.jpg">
+      <img src="images/nonveg/chickencurry.jpg" alt="Chicken Curry" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Chicken Curry</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Fish Curry" data-img="images/nonveg/fishcurry.jpg">
+      <img src="images/nonveg/fishcurry.jpg" alt="Fish Curry" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Fish Curry</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Fish Fry" data-img="images/nonveg/fishfry.jpg">
+      <img src="images/nonveg/fishfry.jpg" alt="Fish Fry" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Fish Fry</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Chicken Burger" data-img="images/nonveg/chickenburger.jpg">
+      <img src="images/nonveg/chickenburger.jpg" alt="Chicken Burger" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Chicken Burger</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Shawarma" data-img="images/nonveg/shawarma.jpg">
+      <img src="images/nonveg/shawarma.jpg" alt="Shawarma" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Shawarma</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Egg Biryani" data-img="images/nonveg/eggbiryani.jpg">
+      <img src="images/nonveg/eggbiryani.jpg" alt="Egg Biryani" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Egg Biryani</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="NON Veg Thali" data-img="images/nonveg/nonvegthali.jpg">
+      <img src="images/nonveg/nonvegthali.jpg" alt="Fresh Fruit Juice" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>NON Veg Thali</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Chicken Sandwich" data-img="images/nonveg/chickensandwich.jpg">
+      <img src="images/nonveg/chickensandwich.jpg" alt="Chicken Sandwich" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Chicken Sandwich</span></div>
+     </div>
+
+    <div class="gallery-item reveal" data-name="Ponganallu" data-img="images/veg/ponganallu.jpg">
+      <img src="images/veg/ponganallu.jpg" alt="Ponganallu" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Ponganallu</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Sabudana Kichidi" data-img="images/veg/sabudanakichidi.jpg">
+      <img src="images/veg/sabudanakichidi.jpg" alt="Sabudana Kichidi" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Sabudana Kichidi</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Dosa" data-img="images/veg/dosa.jpg">
+      <img src="images/veg/dosa.jpg" alt="Dosa" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Dosa</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Poha" data-img="images/veg/poha.jpg">
+      <img src="images/veg/poha.jpg" alt="Poha" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Poha</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Upma" data-img="images/veg/upma.jpg">
+      <img src="images/veg/upma.jpg" alt="Upma" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Upma</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Paneer Sandwich" data-img="images/veg/paneersandwich.jpg">
+      <img src="images/veg/paneersandwich.jpg" alt="Paneer Sandwich" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Paneer Sandwich</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Orange Juice" data-img="images/veg/orangejuice.jpg">
+      <img src="images/veg/orangejuice.jpg" alt="Orange Juice" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Orange Juice</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="Crispy Corn" data-img="images/veg/crispycorn.jpg">
+      <img src="images/veg/crispycorn.jpg" alt="Crispy Corn" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>Crispy Corn</span></div>
+    </div>
+    <div class="gallery-item reveal" data-name="French Fries" data-img="images/veg/frenchfries.jpg">
+      <img src="images/veg/frenchfries.jpg" alt="French Fries" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')">
+      <div class="gallery-overlay"><span>French Fries</span></div>
+
+    </div>
+  </div>
+
+
+  </section>
+
+<!-- Lightbox for gallery -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+  <p id="lightboxCaption"></p>
+</div>
+
+<!-- ============================================================
+     MENU SECTION
+     ============================================================ -->
+<section class="menu" id="menu">
+  <div class="section-intro reveal">
+    <span class="eyebrow">Our Menu</span>
+    <h2 class="section-heading">Handpicked <span class="text-gradient">Favourites</span></h2>
+    <p class="section-sub">Freshly prepared, thoughtfully priced, and ready when you are.</p>
+  </div>
+
+  <div class="menu-filter reveal">
+    <button class="menu-filter-btn active" data-filter="veg">🥦 Veg</button>
+    <button class="menu-filter-btn" data-filter="nonveg">🍗 Non-Veg</button>
+   </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- ============================================================
+     CONTACT US SECTION
+     ============================================================ -->
+<section class="contact" id="contact">
+  <div class="contact-container">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Contact Us</span>
+      <h2 class="section-heading">Let's Get You <span class="text-gradient">Fed</span></h2>
+      <p class="section-sub">Questions, feedback, or a bulk order? Send us a message and we'll get back to you shortly.</p>
+
+      <div class="contact-detail">
+        <span>📍</span>
+        <div><strong>Location</strong><p>Hyderabad, Telangana</p></div>
+      </div>
+      <div class="contact-detail">
+        <span>📞</span>
+        <div><strong>Phone</strong><p>7989776595</p></div>
+      </div>
+      <div class="contact-detail">
+        <span>⏰</span>
+        <div><strong>Hours</strong><p>Everyday, 10:00 AM – 11:00 PM</p></div>
+      </div>
+    </div>
+
+    <form class="contact-form glass reveal" id="contactForm" novalidate>
+      <div class="form-group">
+        <input type="text" id="cname" name="cname" placeholder=" " required>
+        <label for="cname">Customer Name</label>
+        <span class="form-error">Please enter your name</span>
+      </div>
+      <div class="form-group">
+        <input type="tel" id="cphone" name="cphone" placeholder=" " required pattern="[0-9]{10}">
+        <label for="cphone">Phone Number</label>
+        <span class="form-error">Enter a valid 10-digit number</span>
+      </div>
+      <div class="form-group">
+        <input type="email" id="cemail" name="cemail" placeholder=" " required>
+        <label for="cemail">Email Address</label>
+        <span class="form-error">Enter a valid email address</span>
+      </div>
+      <div class="form-group">
+        <textarea id="cmessage" name="cmessage" placeholder=" " rows="4" required></textarea>
+        <label for="cmessage">Message</label>
+        <span class="form-error">Please enter a message</span>
+      </div>
+      <button type="submit" class="btn btn-primary ripple form-submit">
+        <span class="btn-text">Send Message</span>
+        <span class="btn-check">✓</span>
+      </button>
+      <p class="form-success" id="formSuccess">Your message has been submitted successfully.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <img src="azon.png" alt="AZON Green Zone logo" onerror="this.style.display='none'">
+        <span class="nav-logo-text">AZON <em>Green Zone</em></span>
+      </a>
+      <p>Fresh, healthy and delicious food, cooked after you order — every single time.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="WhatsApp" class="social-icon">🟢</a>
+        <a href="#" aria-label="Instagram" class="social-icon">📸</a>
+        <a href="#" aria-label="Telegram" class="social-icon">✈️</a>
+        <a href="#" aria-label="Facebook" class="social-icon">📘</a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Get In Touch</h4>
+      <p>📞 7989776595</p>
+      <p>📍 Hyderabad, Telangana</p>
+      <p>✉️ gajulaarjunroy@gmail.com</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 AZON Green Zone. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer-header">
+    <div>
+      <p class="cart-eyebrow">Your Basket</p>
+      <h3>Shopping Cart</h3>
+    </div>
+    <button class="cart-close" id="cartClose" type="button" aria-label="Close cart">&times;</button>
+  </div>
+
+  <div class="cart-items-list" id="cartItemsList"></div>
+
+  <div class="cart-empty-state" id="cartEmptyState">
+    <div class="cart-empty-emoji" aria-hidden="true">🛒</div>
+    <p class="cart-empty-text">Your cart is empty</p>
+    <button type="button" class="btn btn-primary ripple" id="continueShopping">Continue Shopping</button>
+  </div>
+
+  <div class="cart-summary hidden" id="cartSummary">
+    <div class="summary-row">
+      <span>Total Items</span>
+      <strong id="summaryTotalItems">0</strong>
+    </div>
+    <div class="summary-row">
+      <span>Total Price</span>
+      <strong id="summarySubtotal">₹0</strong>
+    </div>
+    <div class="summary-row">
+      <span>Delivery Charge</span>
+      <strong id="summaryDelivery">₹40</strong>
+    </div>
+    <div class="summary-row">
+      <span>GST (5%)</span>
+      <strong id="summaryGst">₹0</strong>
+    </div>
+    <div class="summary-row grand-total">
+      <span>Grand Total</span>
+      <strong id="summaryGrandTotal">₹0</strong>
+    </div>
+    <button type="button" class="checkout-btn">Proceed to Checkout</button>
+  </div>
+</aside>
+
+<a class="whatsapp-float" href="https://wa.me/917989776595?text=Hi%20AZON%20Green%20Zone,%20I%20want%20to%20order." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <span class="whatsapp-tooltip">Chat with us</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.56 4.08 1.6 5.83L2 22l4.44-1.16a9.86 9.86 0 0 0 5.6 1.59h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 17.97a8.03 8.03 0 0 1-4.08-1.1l-.29-.17-2.63.69.7-2.56-.19-.28a8.04 8.04 0 1 1 6.49 3.42Zm4.43-6.03c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32  .98 2.48c.12.16 1.69 2.59 4.1 3.63.57.25 1.02.4 1.37.52.57.18 1.09.15 1.5.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/>
+    </svg>
+</a>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script src="js/loader.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/hero.js"></script>
+
+<script src="js/ui.js"></script>
+
+<script src="js/menu.js"></script>
+<script src="js/search.js"></script>
+
+
+<script src="js/contact.js"></script></body>
+</html>

@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------
+   10. FOOTER
+   ----------------------------------------------------------------- */
+.footer{ background:var(--dark-bg); color:#D9EEE0; padding:5rem 6vw 0; }
+.footer-container{
+  max-width:1400px; margin:0 auto;
+  display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:3rem;
+  padding-bottom:3rem; border-bottom:1px solid rgba(255,255,255,.08);
+}
+.footer-brand p{ color:#8FB79C; font-size:.9rem; margin:1rem 0 1.4rem; max-width:340px; }
+.footer-brand .nav-logo-text em{ color:var(--primary); }
+.social-icons{ display:flex; gap:.7rem; }
+.social-icon{
+  width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.06);
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  transition:all .3s var(--ease);
+}
+.social-icon:hover{ background:var(--primary); transform:translateY(-4px); }
+.footer-links h4, .footer-contact h4{ font-family:var(--font-display); margin-bottom:1.1rem; font-size:1.05rem; }
+.footer-links a{ display:block; color:#8FB79C; font-size:.9rem; margin-bottom:.7rem; transition:color .3s var(--ease); }
+.footer-links a:hover{ color:var(--primary); }
+.footer-contact p{ color:#8FB79C; font-size:.9rem; margin-bottom:.7rem; }
+.footer-bottom{ max-width:1400px; margin:0 auto; padding:1.6rem 0; text-align:center; color:#6B9179; font-size:.82rem; }

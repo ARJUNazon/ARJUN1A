@@ -1,0 +1,259 @@
+/* =====================================================================
+   13. RESPONSIVE — rewritten and commented for learning
+   =====================================================================
+   HOW THIS FILE IS ORGANIZED (read top to bottom):
+   1) TABLET        (max-width: 1024px)  — big layout shifts start here
+   2) NAV BREAKPOINT (max-width: 860px)  — hamburger menu takes over
+   3) MOBILE NAVBAR FIX (max-width: 768px) — the actual bug you hit
+   4) SMALL MOBILE  (max-width: 560px)   — fine details, tiny screens
+   5) GLOBAL SAFETY RULES (accessibility, no outline flashes, etc.)
+
+   KEY CONCEPT USED BELOW: CSS "order"
+   Flexbox lets you visually re-arrange child elements WITHOUT moving
+   them in the HTML. Every direct child of a flex container has a
+   default order of 0, and renders in source order. If you give one
+   child `order: 1` and another `order: 2`, the order:1 one renders
+   first, no matter where it actually sits in the HTML file. That's
+   how the navbar fix below reorganizes your logo/search/cart/hamburger
+   into clean rows without you touching index.html.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------
+   1) TABLET — max-width: 1024px
+   Two-column sections collapse to one column, and a few grids
+   drop from 4 columns down to 3 so cards don't get too squeezed.
+   --------------------------------------------------------------- */
+@media (max-width:1024px){
+
+  /* These three sections are normally a 2-column grid (image beside
+     text). On tablet there isn't enough width for that comfortably,
+     so we stack them into a single column instead. */
+  .hero-container, .about-container, .contact-container{
+    grid-template-columns:1fr;
+  }
+
+  /* Without this, the hero image would render BELOW the heading/text
+     in the stacked layout (because it comes second in the HTML).
+     order:-1 visually pulls it above everything else in .hero-container,
+     so people see the photo first on tablet/mobile — same trick as
+     the navbar fix, just simpler (only one element to move). */
+  .hero-right{ order:-1; }
+
+  /* Cap the about photo's width so it doesn't stretch edge-to-edge
+     and look oversized once it's a full-width single column. */
+  .about-image{ max-width:420px; margin:0 auto; }
+
+  /* Gallery grid: 4 columns is too tight on a tablet screen, so
+     drop to 3. (.gallery-item:nth-child(5n+1) still makes every
+     5th item a big 2x2 tile — that rule lives in gallery.css and
+     still works fine with 3 columns.) */
+  .gallery-grid{ grid-template-columns:repeat(3,1fr); }
+}
+
+
+/* ---------------------------------------------------------------
+   2) NAV BREAKPOINT — max-width: 860px
+   This is where the desktop nav-links row and the desktop
+   veg/non-veg toggle disappear, and the hamburger + slide-down
+   mobile menu take over instead.
+   --------------------------------------------------------------- */
+@media (max-width:860px){
+
+  /* Hide the desktop-only nav links (Home / About / Gallery / etc.) —
+     they now live inside #mobileMenu instead, which the hamburger
+     button opens via your existing navbar.js. */
+  .nav-right{ display:none; }
+
+  /* Hide the desktop veg/non-veg pill buttons in the top-left of the
+     navbar. The ":not(.mobile)" part is important — it means "hide
+     the normal one, but leave the .mobile copy alone" (that copy
+     lives inside #mobileMenu and should stay visible when the menu
+     is open). */
+  .diet-toggle:not(.mobile){ display:none; }
+
+  /* Show the 3-line hamburger icon (hidden by default in navbar.css). */
+  .hamburger{ display:flex; }
+
+  /* Allow the slide-down mobile menu panel to actually be shown —
+     navbar.js toggles the "open" class on it when you tap the
+     hamburger, and that class needs display:flex to have any effect. */
+  .mobile-menu{ display:flex; }
+
+  .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:180px; }
+  .feature-grid{ grid-template-columns:1fr 1fr; }
+
+  /* Cart drawer becomes a full-screen panel instead of a side strip —
+     420px would feel cramped on a phone. */
+  .cart-drawer{ width:100vw; max-width:100vw; }
+
+  /* Sections normally have 7rem of top/bottom padding (see
+     typography.css) — that's way too much wasted space on mobile,
+     so shrink it. */
+  section{ padding:5rem 6vw; }
+}
+
+
+/* ---------------------------------------------------------------
+   3) MOBILE NAVBAR FIX — max-width: 768px
+   THIS is the block that fixes the actual bug in your screenshot.
+   Nothing here touches your HTML or JS — it only changes how the
+   existing elements are drawn on screen.
+   --------------------------------------------------------------- */
+@media (max-width:768px){
+
+  /* Make the navbar's direct children flow onto multiple rows
+     instead of squeezing (or overflowing) onto one. Combined with
+     the "order" + "flex-basis" rules below, this creates 3 clean
+     rows instead of a jumbled wrap. */
+  .nav-container{
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    padding:12px 16px;
+  }
+
+  /* ===== ROW 1: logo  ...........  cart icon + hamburger ===== */
+
+  /* nav-left (logo) stays first, order:1. It does NOT get a
+     flex-basis:100%, so it only takes up as much width as it needs —
+     that's what leaves room on the same line for the cart + hamburger
+     to sit on the right. */
+  .nav-left{ order:1; display:flex; align-items:center; }
+  .nav-logo img{ width:32px; height:32px; }
+  .nav-logo-text{ font-size:18px; }
+
+  /* The cart button and hamburger are normally later in the HTML
+     (after the search box), which is why they were landing on their
+     own separate row below everything else. Pulling their order
+     numbers down next to nav-left's puts them back on ROW 1. */
+  .cart-button{ order:2; }
+  .hamburger{ order:3; }
+
+  /* ===== ROW 2: dark/light mode toggle, centered, on its own line ===== */
+
+  /* flex-basis:100% forces nav-center to take the FULL width of the
+     row it's on — since row 1 is already full (logo + cart + hamburger
+     spread across it), nav-center is pushed down to a fresh row by
+     itself. order:4 makes sure it comes after row 1's three items. */
+  .nav-center{
+    order:4;
+    flex-basis:100%;
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ===== ROW 3: search box, centered, on its own line ===== */
+
+  /* Same trick again: order:5 (after nav-center) + flex-basis:100%
+     guarantees the search box starts its own row underneath the
+     mode toggle, instead of the browser deciding where it fits. */
+  .searchBox{
+    order:5;
+    flex-basis:100%;
+    display:flex;
+    justify-content:center;
+    margin:0 auto;
+    /* min() picks whichever is SMALLER: 260px, or 80% of the screen
+       width. On a normal phone that's 260px (same as desktop), but
+       on a very narrow/old phone (under ~325px wide) it shrinks
+       automatically instead of overflowing off the edge. */
+    max-width:min(260px, 80vw);
+    width:100%;
+  }
+  .searchInput{ width:100%; font-size:14px; }
+  .searchButton{ width:48px; height:48px; }
+
+  /* nav-right (Home/About/etc. links) is already display:none from
+     the 860px block above, but on the rare screen between 768–860px
+     where only THIS block's rules apply, this keeps it tidy too. */
+  .nav-right{
+    order:6;
+    flex-basis:100%;
+    display:none; /* stays hidden — real nav links are in #mobileMenu */
+  }
+
+
+  /* ---------------- MOBILE HERO ---------------- */
+  /* Same single-column stacking as the 1024px tablet rule, repeated
+     here so it definitely applies even if you ever remove the
+     1024px block above — belt and suspenders. */
+  .hero-container{
+    grid-template-columns:1fr;
+    gap:2rem;
+  }
+  .hero-image-wrap{
+    max-width:320px;
+    width:100%;
+    margin:auto;
+  }
+  .hero-left{ text-align:center; }
+
+  /* Centering the text means the buttons and stat numbers should be
+     centered too, otherwise they look left-aligned and awkward under
+     centered text. */
+  .hero-buttons{ justify-content:center; }
+  .hero-stats{ justify-content:center; }
+
+  /* hero-badge normally sits with `left:-1.5rem` (see hero.css),
+     which intentionally pokes it slightly outside the image on
+     desktop for a layered look. On a narrow phone that negative
+     offset can push it past the edge of the screen and cause
+     horizontal scrolling — so pull it back to a safe position. */
+  .hero-badge{ left:0; }
+}
+
+
+/* ---------------------------------------------------------------
+   4) SMALL MOBILE — max-width: 560px
+   Final polish pass for the smallest common phone widths.
+   --------------------------------------------------------------- */
+@media (max-width:560px){
+
+  .hero-stats{ flex-wrap:wrap; gap:1.4rem; }
+
+  /* On very small screens, keep the gallery's "big featured tile"
+     pattern but only span 1 row tall instead of 2 — 2 rows tall at
+     this width makes that one photo huge and unbalanced. */
+  .gallery-grid{ grid-template-columns:1fr 1fr; }
+  .gallery-item:nth-child(5n+1){ grid-column:span 2; grid-row:span 1; }
+
+  .feature-grid{ grid-template-columns:1fr; }
+  .contact-form{ padding:1.6rem; }
+  .footer-container{ grid-template-columns:1fr; }
+
+  /* Cart item cards: shrink the thumbnail a bit so the price/qty
+     controls next to it have more breathing room on a narrow screen. */
+  .cart-item{ grid-template-columns:72px 1fr; }
+  .cart-item-img{ width:72px; height:72px; }
+}
+
+
+/* ---------------------------------------------------------------
+   5) GLOBAL SAFETY RULES — apply at every screen size
+   --------------------------------------------------------------- */
+
+/* Respect the "Reduce Motion" accessibility setting some people
+   turn on (often for motion sickness) — collapses every animation
+   and transition to nearly instant instead of fully removing them,
+   which keeps things working but stops the movement. */
+@media (prefers-reduced-motion:reduce){
+  *{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* Removes the blue/black focus outline browsers draw around
+   clicked buttons/links/inputs — purely a visual choice matching
+   this site's design (the design relies on its own hover/active
+   states instead of the browser default outline). */
+a:focus, a:focus-visible, button:focus, button:focus-visible,
+input:focus, input:focus-visible, textarea:focus, textarea:focus-visible,
+select:focus, select:focus-visible, [tabindex]:focus, [tabindex]:focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
+}
